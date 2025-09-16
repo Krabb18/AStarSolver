@@ -10,7 +10,7 @@ void AStarSolver::InitGrid(int width, int height)
     {
         for(int y = 0; y<height; y++)
         {
-            nodes[y * width + x].x = x; // ...because we give each node its own coordinates
+            nodes[y * width + x].x = x;
 			nodes[y * width + x].y = y;
             nodes[y * width + x].isObstacle = false;
             nodes[y * width + x].localGoal = INFINITY;
@@ -76,7 +76,6 @@ bool AStarSolver::SolveAStar()
     nodeStart->localGoal = 0.0f;
 	nodeStart->globalGoal = heuristic(nodeStart, nodeEnd);
 
-    //nachhher in while?
     list<sNode*> nodesToTest;
     nodesToTest.push_back(nodeStart);
 
@@ -91,7 +90,7 @@ bool AStarSolver::SolveAStar()
         
         if(nodesToTest.empty()) break;
         currentNode = nodesToTest.front();
-		currentNode->visited = true; // We only explore a node once
+		currentNode->visited = true; 
 
         for(auto &nei : currentNode->vecNeighbors)
         {
